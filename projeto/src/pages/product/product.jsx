@@ -9,10 +9,9 @@ const Product = () => {
     const [ product, setProduct] = useState(null);
 
     const loadData = async () => {
-        const id = 1;
-        // const id = params.id; //Correto
+        // const id = 1;
+        const id = params.id; //Correto
         const response = await 
-        // get(`https://demo8462142.mockable.io/produto/${id}`);
         get(`https://demo5193762.mockable.io/product/${id}`);
         setProduct(response.data)
     }

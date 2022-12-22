@@ -12,6 +12,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Logo from "../../assets/img/Tround_Ftransparente.png";
+import Badge from '@mui/material/Badge';
+import cart from "../cart/cart"
 import './app-bar.css';
 
 const pages = [
@@ -39,6 +41,7 @@ const LocalAppBar = () => {
     setAnchorElNav(null);
   };
 
+  console.log([cart.length]);
   return (
     <AppBar position="static"
     sx={{
@@ -100,10 +103,13 @@ const LocalAppBar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Link to="/cart">
-                <IconButton sx={{ p: 0, color: "#fff" }}>
-                    <ShoppingCartIcon />
-                </IconButton>
+            <Badge badgeContent={cart.length} color="primary">
+              <ShoppingCartIcon color="action" sx={{ p: 0, color: "#fff" }}/>
+            </Badge>
+                
+                
             </Link>
+            
           </Box>
         </Toolbar>
       </Container>

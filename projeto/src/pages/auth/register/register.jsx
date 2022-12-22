@@ -109,13 +109,16 @@ const Register = () => {
                 }}
             />
             <Text
-                text="Efetue registro"
-                type="h2"
-                style={{
-                    color: "#3498db",
+                text='Criar seu cadastro'
+                variant='h5'
+                component='p'
+                boxStyle={{
+                    color: '#fff',
                     textAlign: 'center',
-                    textTransform: 'uppercase'
-                }}/>
+                    // textTransform: 'uppercase'
+                }}
+                />
+
             <TextField
                 fullWidth={true}
                 value={username.value}
@@ -188,7 +191,7 @@ const Register = () => {
                     // variant={"text"}
                     uppercase={true}
                     size={"large"}
-                    title={"Entrar"}
+                    title={"Fazer Login"}
                     type={"button"}
                     fullWidth={true}/>
             </Link>
@@ -205,7 +208,7 @@ const Register = () => {
                 }}
                 // StartIcon={SendTwoToneIcon}
                 uppercase={true}
-                title={"Registrar"}
+                title={"cadastrar"}
                 type={"button"}
                 onClick={register}/>
         </div>

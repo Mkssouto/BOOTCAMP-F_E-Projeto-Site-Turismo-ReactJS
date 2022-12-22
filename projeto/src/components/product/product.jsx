@@ -4,6 +4,8 @@ import Button from '../button/button';
 import Chip from '@mui/material/Chip';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { addToCart, buy } from '../../services/buy';
 
 import CheckIcon from '@mui/icons-material/Check';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
@@ -152,7 +154,7 @@ const Product = ({ product }) => {
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon 
-          // sx={{color: 'red'}}
+          
           />
         </IconButton>
         <IconButton aria-label="share">
@@ -160,7 +162,7 @@ const Product = ({ product }) => {
           sx={{color: '#001b33'}}/>
         </IconButton>
         
-        <Link to={`/cart`}>
+        
         <Button
                 fullWidth={false}
                 title={<LocalGroceryStoreOutlinedIcon />}
@@ -171,10 +173,11 @@ const Product = ({ product }) => {
                   marginLeft: '10px',
                   color: '#001b33'
                 }}
+                onClick={ () => addToCart(product)}
              />
-        </Link>
+        
 
-        <Link to={`/product/${id}`}>
+        <Link to={`/product/${id}`}> 
         <Button
                 fullWidth={false}
                 title={'Comprar'}
@@ -182,6 +185,7 @@ const Product = ({ product }) => {
                   backgroundColor: '#001b33f2',
                   borderRadius: '20px'
                 }}
+                
              />
         </Link>
 

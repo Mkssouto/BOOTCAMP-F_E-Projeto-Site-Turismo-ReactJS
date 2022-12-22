@@ -12,10 +12,16 @@ import { Link } from 'react-router-dom';
 import * as React from 'react';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
-import ConnectingAirportsIcon from '@mui/icons-material/ConnectingAirports';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BedroomParentIcon from '@mui/icons-material/BedroomParent';
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import { useNavigate } from 'react-router-dom';
+import { buy, addToCart } from '../../services/buy';
+
 
 const ProductItem = ({ product }) => {
+    const navigate = useNavigate();
+
     const [value, setValue] = useState(4);
     const [size, setSize] = useState([]);
     const [color, setColor] = useState([]);
@@ -47,6 +53,8 @@ const ProductItem = ({ product }) => {
                     component='p'
                     text={product.description}
                     boxStyle={{
+                        textAlign: 'Justify',
+                        lineHeight: '22px',
                         margin: '20px 0 0',
                     }}
                 />
@@ -106,7 +114,8 @@ const ProductItem = ({ product }) => {
                     boxStyle={{
                         fontSize: '18px',
                         color: '#001b33',
-                        margin: '20px 0',
+                        alignSelf: 'center',
+                        margin: '10px 0 5px 0'
                     }}
                 />
 
@@ -115,6 +124,7 @@ const ProductItem = ({ product }) => {
                         fontSize: '35px',
                         paddingRight: '5px',
                         borderBox: 'box-sizing',
+                        alignSelf: 'center',
                         color: '#001b33'
                     }} />}
                     variant='p'
@@ -123,17 +133,41 @@ const ProductItem = ({ product }) => {
                     boxStyle={{
                         fontSize: '18px',
                         color: '#001b33',
-                        margin: '20px 0 5px 0',
+                        margin: '5px 0 5px 0'
                     }}
                 />
                 <Text
-                    variant='h6'
-                    component='h1'
+                    icon={<CalendarMonthIcon sx={{
+                        fontSize: '35px',
+                        paddingRight: '5px',
+                        borderBox: 'box-sizing',
+                        alignSelf: 'center',
+                        color: '#001b33'
+                    }} />}
+                    variant='p'
+                    component='p'
                     text={product.period}
                     boxStyle={{
+                        fontSize: '18px',
                         color: '#001b33',
-                        marginLeft: '35px',
-                        marginBottom: '20px'
+                        margin: '5px 0 5px 0'
+                    }}
+                />
+                <Text
+                    icon={<LibraryAddIcon sx={{
+                        fontSize: '35px',
+                        paddingRight: '5px',
+                        borderBox: 'box-sizing',
+                        alignSelf: 'center',
+                        color: '#001b33'
+                    }} />}
+                    variant='p'
+                    component='p'
+                    text={product.extra}
+                    boxStyle={{
+                        fontSize: '18px',
+                        color: '#001b33',
+                        margin: '5px 0 10px 0'
                     }}
                 />
 
@@ -173,7 +207,20 @@ const ProductItem = ({ product }) => {
                     marginBottom: 1
                 }}>
                     <span style={{
-                        marginTop: '15px', marginBottom: '20px'
+                        marginTop: '10px', marginBottom: '5px'
+                    }}>
+                        <Select
+                            sx={{ borderRadius: '20px' }}
+                            id="select-color"
+                            label={"Viajantes"}
+                            chips={false}
+                            value={color}
+                            onChange={setColor}
+                            options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                        />
+                    </span>
+                    <span style={{
+                        marginTop: '5px', marginBottom: '20px'
                     }}>
                         <Select
                             sx={{ borderRadius: '20px' }}
@@ -188,7 +235,7 @@ const ProductItem = ({ product }) => {
                 </Stack >
 
                 <Stack direction="row" >
-                    <Link to={`/cart`}>
+                    
                         <Button
                             fullWidth={false}
                             title={<LocalGroceryStoreOutlinedIcon />}
@@ -199,10 +246,10 @@ const ProductItem = ({ product }) => {
                                 marginLeft: '10px',
                                 color: '#001b33'
                             }}
+                            onClick={() => buy(product, navigate)}
                         />
-                    </Link>
-
-                    <Link to={`/cart/`}>
+                    
+                    <Link to={`/cart/`}>    
                         <Button
                             fullWidth={false}
                             title={'Comprar'}
@@ -210,8 +257,10 @@ const ProductItem = ({ product }) => {
                                 backgroundColor: '#001b33f2',
                                 borderRadius: '20px'
                             }}
+                            onClick={() => addToCart(product)}
                         />
                     </Link>
+                   
 
                 </Stack>
             </Box>

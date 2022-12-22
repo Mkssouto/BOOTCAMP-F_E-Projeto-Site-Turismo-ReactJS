@@ -1,17 +1,16 @@
 import '../auth.css';
-
 import { useState } from 'react';
 import SendTwoToneIcon from '@mui/icons-material/SendTwoTone';
 import { Link } from 'react-router-dom';
-import Logo from "../../../assets/img/Tround_Ftransparente.png";
 
+import Logo from "../../../assets/img/Tround_Ftransparente.png";
 
 import Button from "../../../components/button/button";
 import TextField from "../../../components/textfield/textfield";
 import Avatar from "../../../components/avatar/avatar";
 import Text from "../../../components/text/text";
 import Checkbox from "../../../components/checkbox/checkbox";
-import { Typography } from '@mui/material';
+
 
 const Login = () => {
     const textFieldStyle = {
@@ -60,12 +59,12 @@ const Login = () => {
                 }}
             />
             <Text
-                text="Efetue login"
-                type="h2"
-                style={{
-                    color: 'white',
-                    textAlign: 'center',
-                    textTransform: 'uppercase'
+                text='Login'
+                variant='h4'
+                component='p'
+                boxStyle={{
+                    color: '#fff',
+                    textAlign: 'center'
                 }}
                 />
 
@@ -110,7 +109,7 @@ const Login = () => {
                     // variant={"outlined"}
                     uppercase={true}
                     size={"large"}
-                    title={"Registrar"}
+                    title={"cadastre-se"}
                     type={"button"}
                     fullWidth={true}/>
             </Link>
